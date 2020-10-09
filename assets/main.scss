@@ -1,0 +1,11 @@
+@media print {
+  .pb {
+    page-break-after: always;
+  }
+}
+
+.pb {
+  display: none;
+
+  @media print { display: block; page-break-after: always; }
+}
