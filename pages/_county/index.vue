@@ -352,7 +352,7 @@ export default {
     results: null,
     showResults: false,
     details: null,
-    showDetails: true,
+    showDetails: false,
     headers: [
       { text: 'Account Number', value: 'accountNumber' },
       { text: 'Owner Name(s)', value: 'ownerName' },
