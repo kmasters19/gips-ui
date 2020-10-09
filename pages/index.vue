@@ -44,6 +44,17 @@ export default {
     ],
     selectedCounty: null
   }),
+  mounted() {
+    this.$axios.get('/search/counties').then((res) => {
+      if (res.status === 200) {
+        this.counties = []
+        for (const county of res.data) {
+          const countyName = county[0].toUpperCase() + county.slice(1)
+          this.counties.push({ text: countyName + ' County', value: county })
+        }
+      }
+    })
+  },
   methods: {
     setSelectedCounty(e) {
       this.selectedCounty = e
