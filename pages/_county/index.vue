@@ -146,7 +146,7 @@
                   :headers="detailAccountHeaders"
                   :items="details.accounts"
                   :items-per-page="-1"
-                  :hide-default-header="true"
+                  :hide-default-footer="true"
                 >
                   <template v-slot:item.landGrossAcres="{ item }">
                     {{ formatDecimal(item.landGrossAcres) }}
@@ -188,7 +188,7 @@
                   :headers="detailAbstractHeaders"
                   :items="details.abstractItems"
                   :items-per-page="-1"
-                  :hide-default-header="true"
+                  :hide-default-footer="true"
                 >
                   <template v-slot:item.acres="{ item }">
                     {{ formatDecimal(item.acres) }}
