@@ -26,6 +26,7 @@
                     v-model="accountNumber"
                     label="Account Number"
                     outlined
+                    @keyup="checkSubmit"
                   />
                 </v-col>
                 <v-col cols="12" lg="6">
@@ -33,16 +34,23 @@
                     v-model="ownerName"
                     label="Owner Name"
                     outlined
+                    @keyup="checkSubmit"
                   />
                 </v-col>
                 <v-col cols="12" lg="6">
-                  <v-text-field v-model="pin" label="PIN" outlined />
+                  <v-text-field
+                    v-model="pin"
+                    label="PIN"
+                    outlined
+                    @keyup="checkSubmit"
+                  />
                 </v-col>
                 <v-col cols="12" lg="6">
                   <v-text-field
                     v-model="propertyAddress"
                     label="Property Address"
                     outlined
+                    @keyup="checkSubmit"
                   />
                 </v-col>
                 <v-col cols="12" class="text-right">
@@ -402,6 +410,11 @@ export default {
     }
   },
   methods: {
+    checkSubmit(e) {
+      if (e.keyCode === 13) {
+        this.doSearch()
+      }
+    },
     doSearch() {
       if (
         (this.accountNumber === null || this.accountNumber === '') &&
