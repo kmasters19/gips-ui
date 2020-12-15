@@ -144,7 +144,7 @@
               <v-card-text>
                 <v-data-table
                   :headers="detailAccountHeaders"
-                  :items="details.accounts"
+                  :items="detailAccounts"
                   :items-per-page="-1"
                   :hide-default-footer="true"
                 >
@@ -340,6 +340,8 @@
 </template>
 
 <script>
+import * as _ from 'lodash'
+
 export default {
   name: 'CountyIndex',
   data: () => ({
@@ -358,6 +360,7 @@ export default {
       { text: 'Owner Name(s)', value: 'ownerName' },
       { text: 'Address', value: 'propertyAddress' }
     ],
+    detailAccounts: [],
     detailAccountHeaders: [
       { text: 'Account Type', value: 'accountType' },
       { text: 'Year', value: 'taxYear' },
@@ -444,6 +447,22 @@ export default {
             this.$axios.get(detailUrl).then((res) => {
               if (res.status === 200) {
                 this.details = res.data
+
+                if (res.data.accounts && res.data.accounts.length > 0) {
+                  const accountDetail = {
+                    accountType: res.data.account[0].accountType,
+                    taxArea: res.data.account[0].taxDistrict,
+                    taxYear: res.data.account[0].taxYear,
+                    millLevy: res.data.account[0].millLevy,
+                    landGrossAcres: res.data.accounts[0].landGrossAcres,
+                    landGrossSqFt: res.data.accounts[0].landGrossSqFt,
+                    actualValue: _.sumBy(res.data.accounts, 'actualValue'),
+                    assessedValue: _.sumBy(res.data.accounts, 'assessedValue'),
+                    estimatedTax: _.sumBy(res.data.accounts, 'estimatedTax')
+                  }
+                  this.detailAccounts.push(accountDetail)
+                }
+
                 this.showResults = false
                 this.showDetails = true
               }
