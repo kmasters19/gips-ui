@@ -88,8 +88,8 @@
           </v-card-text>
         </v-card>
       </v-col>
-      <v-col v-if="details && showDetails" cols="12" sm="8">
-        <v-row>
+      <v-col v-if="details && showDetails" cols="12">
+        <v-row class="d-print-none">
           <v-col cols="6" class="text-left">
             <v-btn color="primary" class="d-print-none" @click="doBack">
               <v-icon> mdi-chevron-left </v-icon>
@@ -146,6 +146,8 @@
               </v-card-text>
             </v-card>
           </v-col>
+        </v-row>
+        <v-row>
           <v-col cols="12">
             <v-card>
               <v-card-title>Account Information</v-card-title>
@@ -187,7 +189,8 @@
               </v-card-text>
             </v-card>
           </v-col>
-          <v-col cols="12" class="pb"></v-col>
+        </v-row>
+        <v-row>
           <v-col cols="12">
             <v-card>
               <v-card-title>Abstract Information</v-card-title>
@@ -220,7 +223,8 @@
               </v-card-text>
             </v-card>
           </v-col>
-          <v-col cols="12" class="pb"></v-col>
+        </v-row>
+        <v-row>
           <v-col cols="12">
             <v-card>
               <v-card-title>Building Improvements</v-card-title>
@@ -464,7 +468,7 @@ export default {
                 if (res.data.accounts && res.data.accounts.length > 0) {
                   const accountDetail = {
                     accountType: res.data.accounts[0].accountType,
-                    taxArea: res.data.accounts[0].taxDistrict,
+                    taxArea: res.data.accounts[0].taxArea,
                     taxYear: res.data.accounts[0].taxYear,
                     millLevy: res.data.accounts[0].millLevy,
                     landGrossAcres: res.data.accounts[0].landGrossAcres,
