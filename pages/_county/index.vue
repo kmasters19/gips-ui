@@ -450,15 +450,17 @@ export default {
 
                 if (res.data.accounts && res.data.accounts.length > 0) {
                   const accountDetail = {
-                    accountType: res.data.account[0].accountType,
-                    taxArea: res.data.account[0].taxDistrict,
-                    taxYear: res.data.account[0].taxYear,
-                    millLevy: res.data.account[0].millLevy,
+                    accountType: res.data.accounts[0].accountType,
+                    taxArea: res.data.accounts[0].taxDistrict,
+                    taxYear: res.data.accounts[0].taxYear,
+                    millLevy: res.data.accounts[0].millLevy,
                     landGrossAcres: res.data.accounts[0].landGrossAcres,
                     landGrossSqFt: res.data.accounts[0].landGrossSqFt,
                     actualValue: _.sumBy(res.data.accounts, 'actualValue'),
                     assessedValue: _.sumBy(res.data.accounts, 'assessedValue'),
-                    estimatedTax: _.sumBy(res.data.accounts, 'estimatedTax')
+                    estimatedTax: _.sumBy(res.data.accounts, function (o) {
+                      return parseFloat(o.estimatedTax)
+                    })
                   }
                   this.detailAccounts.push(accountDetail)
                 }
@@ -493,10 +495,8 @@ export default {
       let total = 0.0
 
       for (const item of items) {
-        console.log(item.sqFt)
         total += parseFloat(item.sqFt)
       }
-      console.log(total)
       return total
     },
     totalAcres(items) {
