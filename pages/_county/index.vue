@@ -420,11 +420,13 @@ export default {
       }
     },
     doSearch() {
+      this.errorText = null
+
       if (
         (this.accountNumber === null || this.accountNumber === '') &&
         (this.pin === null || this.pin === '') &&
         (this.ownerName === null || this.ownerName === '') &&
-        (this.accountNumber === null || this.accountNumber === '')
+        (this.propertyAddress === null || this.propertyAddress === '')
       ) {
         this.errorText = 'Please enter one or more fields.'
         return false
