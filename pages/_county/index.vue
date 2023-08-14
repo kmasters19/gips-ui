@@ -66,10 +66,10 @@
       </v-col>
     </v-row>
     <v-row justify="center" align="center">
-      <v-col v-if="this.results && showResults" cols="12" sm="8">
+      <v-col v-if="results && showResults" cols="12" sm="8">
         <v-card>
           <v-card-title>
-            <h3 class="headline">{{ this.results.length }} Search Results</h3>
+            <h3 class="headline">{{ results.length }} Search Results</h3>
           </v-card-title>
           <v-card-text>
             <p>Click on a row to view Property Details.</p>
@@ -78,10 +78,10 @@
               :items="results"
               @click:row="clickRow"
             >
-              <template v-slot:item.ownerName="{ item }">
+              <template #item.ownerName="{ item }">
                 <span v-html="item.ownerName" />
               </template>
-              <template v-slot:item.propertyAddress="{ item }">
+              <template #item.propertyAddress="{ item }">
                 <span v-html="item.propertyAddress" />
               </template>
             </v-data-table>
@@ -158,19 +158,19 @@
                   :items-per-page="-1"
                   :hide-default-footer="true"
                 >
-                  <template v-slot:item.landGrossAcres="{ item }">
+                  <template #item.landGrossAcres="{ item }">
                     {{ formatDecimal(item.landGrossAcres) }}
                   </template>
-                  <template v-slot:item.landGrossSqFt="{ item }">
+                  <template #item.landGrossSqFt="{ item }">
                     {{ formatDecimal(item.landGrossSqFt) }}
                   </template>
-                  <template v-slot:item.actualValue="{ item }">
+                  <template #item.actualValue="{ item }">
                     ${{ formatDecimal(item.actualValue) }}
                   </template>
-                  <template v-slot:item.assessedValue="{ item }">
+                  <template #item.assessedValue="{ item }">
                     ${{ formatDecimal(item.assessedValue) }}
                   </template>
-                  <template v-slot:item.estimatedTax="{ item }">
+                  <template #item.estimatedTax="{ item }">
                     ${{ formatDecimal(item.estimatedTax) }}
                   </template>
                 </v-data-table>
@@ -201,13 +201,13 @@
                   :items-per-page="-1"
                   :hide-default-footer="true"
                 >
-                  <template v-slot:item.acres="{ item }">
+                  <template #item.acres="{ item }">
                     {{ formatDecimal(item.acres) }}
                   </template>
-                  <template v-slot:item.sqFt="{ item }">
+                  <template #item.sqFt="{ item }">
                     {{ formatDecimal(item.sqFt) }}
                   </template>
-                  <template v-slot:body.append="{ items }">
+                  <template #body.append="{ items }">
                     <tr>
                       <th class="text-start">Totals</th>
                       <td class="text-start"></td>
@@ -230,16 +230,16 @@
               <v-card-title>Building Improvements</v-card-title>
               <v-card-text>
                 <v-data-table
+                  v-model:expanded="detailBuildingImprovementsExpanded"
                   :headers="detailImprovementsHeaders"
                   :items="details.improvements"
                   :single-expand="false"
-                  :expanded.sync="detailBuildingImprovementsExpanded"
                   :items-per-page="-1"
                   :hide-default-footer="true"
                   item-key="buildingId"
                   show-expand
                 >
-                  <template v-slot:expanded-item="{ headers, item }">
+                  <template #expanded-item="{ headers, item }">
                     <td :colspan="headers.length">
                       <v-row>
                         <v-col cols="12" md="6">
@@ -382,7 +382,7 @@ export default {
       { text: 'Gross Sq. Ft.', value: 'landGrossSqFt' },
       { text: 'Actual Value', value: 'actualValue' },
       { text: 'Assessed Value', value: 'assessedValue' },
-      { text: 'Total Tax Dollars', value: 'estimatedTax' }
+      { text: 'Estimated Tax Dollars', value: 'estimatedTax' }
     ],
     detailAbstractHeaders: [
       { text: 'Code', value: 'abstractCode' },
