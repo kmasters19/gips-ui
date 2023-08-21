@@ -242,7 +242,7 @@
                   <template #expanded-item="{ headers, item }">
                     <td :colspan="headers.length">
                       <v-row>
-                        <v-col cols="12">
+                        <v-col cols="12" md="6">
                           <v-row dense>
                             <v-col cols="6">
                               <span class="font-weight-bold">Building ID</span>
@@ -285,6 +285,8 @@
                               {{ item.exterior }}
                             </v-col>
                           </v-row>
+                        </v-col>
+                        <v-col cols="12" md="6">
                           <v-row dense>
                             <v-col cols="6">
                               <span class="font-weight-bold">Interior</span>
