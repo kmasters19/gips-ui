@@ -325,8 +325,8 @@
                             </v-col>
                             <v-col cols="6">
                               {{ item.yearBuilt }}
-                            </v-col> </v-row
-                          >\
+                            </v-col>
+                          </v-row>
                         </v-col>
                       </v-row>
                       <v-row>
