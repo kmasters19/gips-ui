@@ -2,8 +2,8 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   env: {
-    _AXIOS_BASE_URL: process.env.API_BASE_URL || 'http://localhost:3000',
-    API_BASE_URL: process.env.API_BASE_URL || 'http://localhost:3000'
+    _AXIOS_BASE_URL: process.env.API_BASE_URL || 'https://gi-ps.herokuapp.com',
+    API_BASE_URL: process.env.API_BASE_URL || 'https://gi-ps.herokuapp.com'
   },
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {

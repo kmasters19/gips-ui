@@ -114,7 +114,7 @@
                 </p>
                 <p>
                   <span class="font-weight-bold">Parcel Number:</span>
-                  <span v-text="details.parcelNumber" />
+                  <span v-text="details.parcelNumber ?? ''" />
                 </p>
                 <v-divider />
                 <p class="font-weight-bold">Owner(s)</p>
@@ -245,6 +245,14 @@
                         <v-col cols="12" md="6">
                           <v-row dense>
                             <v-col cols="6">
+                              <span class="font-weight-bold">Building ID</span>
+                            </v-col>
+                            <v-col cols="6">
+                              {{ item.buildingId }}
+                            </v-col>
+                          </v-row>
+                          <v-row dense>
+                            <v-col cols="6">
                               <span class="font-weight-bold">Type</span>
                             </v-col>
                             <v-col cols="6">
@@ -261,10 +269,12 @@
                           </v-row>
                           <v-row dense>
                             <v-col cols="6">
-                              <span class="font-weight-bold">Bedrooms</span>
+                              <span class="font-weight-bold"
+                                >Square Footage</span
+                              >
                             </v-col>
                             <v-col cols="6">
-                              {{ item.bedroomCount }}
+                              {{ item.sqFt }}
                             </v-col>
                           </v-row>
                           <v-row dense>
@@ -275,42 +285,8 @@
                               {{ item.exterior }}
                             </v-col>
                           </v-row>
-                          <v-row dense>
-                            <v-col cols="6">
-                              <span class="font-weight-bold"
-                                >Square Footage</span
-                              >
-                            </v-col>
-                            <v-col cols="6">
-                              {{ item.sqFt }}
-                            </v-col>
-                          </v-row>
                         </v-col>
                         <v-col cols="12" md="6">
-                          <v-row dense>
-                            <v-col cols="6">
-                              <span class="font-weight-bold">Building ID</span>
-                            </v-col>
-                            <v-col cols="6">
-                              {{ item.buildingId }}
-                            </v-col>
-                          </v-row>
-                          <v-row dense>
-                            <v-col cols="6">
-                              <span class="font-weight-bold">Year Built</span>
-                            </v-col>
-                            <v-col cols="6">
-                              {{ item.yearBuilt }}
-                            </v-col>
-                          </v-row>
-                          <v-row dense>
-                            <v-col cols="6">
-                              <span class="font-weight-bold">Bathrooms</span>
-                            </v-col>
-                            <v-col cols="6">
-                              {{ item.bathCount }}
-                            </v-col>
-                          </v-row>
                           <v-row dense>
                             <v-col cols="6">
                               <span class="font-weight-bold">Interior</span>
@@ -327,6 +303,30 @@
                             </v-col>
                             <v-col cols="6">
                               {{ item.hvac }}
+                            </v-col>
+                          </v-row>
+                          <v-row dense>
+                            <v-col cols="6">
+                              <span class="font-weight-bold">Bedrooms</span>
+                            </v-col>
+                            <v-col cols="6">
+                              {{ item.bedroomCount }}
+                            </v-col>
+                          </v-row>
+                          <v-row dense>
+                            <v-col cols="6">
+                              <span class="font-weight-bold">Bathrooms</span>
+                            </v-col>
+                            <v-col cols="6">
+                              {{ item.bathCount }}
+                            </v-col>
+                          </v-row>
+                          <v-row dense>
+                            <v-col cols="6">
+                              <span class="font-weight-bold">Year Built</span>
+                            </v-col>
+                            <v-col cols="6">
+                              {{ item.yearBuilt }}
                             </v-col>
                           </v-row>
                         </v-col>
