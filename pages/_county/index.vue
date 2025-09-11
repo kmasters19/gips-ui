@@ -396,7 +396,7 @@ export default {
     detailAccountHeaders() {
       let assessedValueHeader = 'Assessed Value';
 
-      if (this.countyName === 'niobrara') {
+      if (this.countyName === 'Niobrara') {
         assessedValueHeader = 'Estimated Tax Value';
       }
 
