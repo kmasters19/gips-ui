@@ -373,17 +373,6 @@ export default {
       { text: 'Address', value: 'propertyAddress' }
     ],
     detailAccounts: [],
-    detailAccountHeaders: [
-      { text: 'Account Type', value: 'accountType' },
-      { text: 'Year', value: 'taxYear' },
-      { text: 'Tax Area', value: 'taxArea' },
-      { text: 'Mill Levy', value: 'millLevy' },
-      { text: 'Gross Acres', value: 'landGrossAcres' },
-      { text: 'Gross Sq. Ft.', value: 'landGrossSqFt' },
-      { text: 'Actual Value', value: 'actualValue' },
-      { text: 'Assessed Value', value: 'assessedValue' },
-      { text: 'Estimated Tax Dollars', value: 'estimatedTax' }
-    ],
     detailAbstractHeaders: [
       { text: 'Code', value: 'abstractCode' },
       { text: 'Description', value: 'abstractDescription' },
@@ -403,6 +392,27 @@ export default {
       { text: 'Units', value: 'units' }
     ]
   }),
+  computed: {
+    detailAccountHeaders() {
+      let assessedValueHeader = 'Assessed Value';
+
+      if (this.countyName === 'niobrara') {
+        assessedValueHeader = 'Estimated Tax Value';
+      }
+
+      return [
+        { text: 'Account Type', value: 'accountType' },
+        { text: 'Year', value: 'taxYear' },
+        { text: 'Tax Area', value: 'taxArea' },
+        { text: 'Mill Levy', value: 'millLevy' },
+        { text: 'Gross Acres', value: 'landGrossAcres' },
+        { text: 'Gross Sq. Ft.', value: 'landGrossSqFt' },
+        { text: 'Actual Value', value: 'actualValue' },
+        { text: 'Estimated Tax Dollars', value: 'estimatedTax' },
+        { text: assessedValueHeader, value: 'assessedValue' }
+      ]
+    }
+  },
   mounted() {
     const s = this.$route.params.county
     this.countyName = s && s[0].toUpperCase() + s.slice(1)
