@@ -175,6 +175,9 @@
                   </template>
                 </v-data-table>
                 <div v-if="countyName === 'Niobrara'" class="well text-center">
+                  *The difference between Actual Value and Adjusted Actual Value above is property tax exemption legislation from the 2024 and 2025 legislative sessions.  Please contact our office for clarification.
+                </div>
+                <div v-if="countyName === 'Niobrara'" class="well text-center">
                   You may view property tax information online at:
                   <a
                     :href="`https://itax.tylertech.com/NiobraraWY/detail.aspx?taxid=${details.accountNumber}`"
@@ -394,10 +397,10 @@ export default {
   }),
   computed: {
     detailAccountHeaders() {
-      let assessedValueHeader = 'Assessed Value';
+      let taxColumnHeader = 'Estimated Tax Dollars';
 
       if (this.countyName === 'Niobrara') {
-        assessedValueHeader = 'Estimated Tax Value';
+        taxColumnHeader = 'Adjusted Actual Value*';
       }
 
       return [
@@ -408,8 +411,8 @@ export default {
         { text: 'Gross Acres', value: 'landGrossAcres' },
         { text: 'Gross Sq. Ft.', value: 'landGrossSqFt' },
         { text: 'Actual Value', value: 'actualValue' },
-        { text: 'Estimated Tax Dollars', value: 'estimatedTax' },
-        { text: assessedValueHeader, value: 'assessedValue' }
+        { text: taxColumnHeader, value: 'estimatedTax' },
+        { text: 'Assessed Value', value: 'assessedValue' }
       ]
     }
   },
